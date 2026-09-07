@@ -10,7 +10,7 @@ BUILD := build
 ARCH := -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 CFLAGS := -g -O2 -Wall -Wextra -std=gnu11 -mword-relocations -ffunction-sections $(ARCH) $(INCLUDE) -D__3DS__
 LDFLAGS = -specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
-LIBS := -lctru -lm
+LIBS := -lcitro2d -lcitro3d -lctru -lm
 export APP_TITLE := Pocket Recon
 export APP_DESCRIPTION := Pocket network explorer
 export APP_AUTHOR := Pocket Recon contributors
@@ -22,7 +22,7 @@ export VPATH := $(CURDIR)/source
 export DEPSDIR := $(CURDIR)/$(BUILD)
 export INCLUDE := -I$(CURDIR)/include -I$(CTRULIB)/include
 export LIBPATHS := -L$(CTRULIB)/lib
-export OFILES := main.o scanner.o
+export OFILES := main.o scanner.o ui.o result_filter.o
 export LD := $(CC)
 export _3DSXFLAGS := --smdh=$(OUTPUT).smdh
 .PHONY: all clean
